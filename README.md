@@ -1,7 +1,7 @@
 # KiNet
 This code is used to locate and classify individual cells or nuclei in histologic images.
 
-*Some codes in this repository are based on the following codes:\
+*Some codes are based on this following code repository:\
 Hoffman et al. CyCADA: Cycle-Consistent Adversarial Domain Adaptation. ICML 2018. https://github.com/jhoffman/cycada_release
 
 
