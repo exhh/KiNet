@@ -4,9 +4,9 @@ This code is used to locate and classify individual cells or nuclei in histologi
 Hoffman et al. CyCADA: Cycle-Consistent Adversarial Domain Adaptation. ICML 2018. https://github.com/jhoffman/cycada_release
 
 
-Training: The input is RGB images and corresponding labels. The labels are K proximity maps, each of which corresponds one type of cell/nucleus.\ 
+Training: The input is RGB images and corresponding labels. The labels are K proximity maps, each of which corresponds one type of cell/nucleus.
 
-Testing: The input is RGB images. The output is predicted cells/nuclei and category labels, stored in .mat files.\
+Testing: The input is RGB images. The output is predicted cells/nuclei and category labels, stored in .mat files.
 
 Usage:\
 Training: ./train_fcn_cell_class.sh \
