@@ -8,13 +8,15 @@ Hoffman et al. CyCADA: Cycle-Consistent Adversarial Domain Adaptation. ICML 2018
 <img src="results/example_result.png" width="1200"><br/>
 <br />
 
+
 **Training:** The input is RGB images and corresponding labels. The labels are K proximity maps, each of which corresponds one type of cell/nucleus.
 
-**Testing:** The input is RGB images. The output is predicted cells/nuclei and category labels, stored in .mat files.
+**Testing:** The input is RGB images. The output is predicted cells/nuclei and category labels, stored in .mat files and also overlaid on RGB images (as shown in the "Prediction" column in the figure above).
 
 **Usage (Linux command line):** \
 Model training: &nbsp; ./train_fcn_cell_class.sh \
 Model inference/prediction: &nbsp; ./eval_fcn_cell_class.sh  
+
 
 <br /> <br />
 Relevant References:\
