@@ -15,7 +15,7 @@ from nureg.data.data_loader import get_fcn_dataset
 from nureg.models.models import get_model
 from nureg.models.models import models
 from nureg.util import to_tensor_raw
-from nureg.tools.analysis_util import get_seed_name
+from nureg.tools.analysis_util import get_seed_name, printCoordsClass
 
 import scipy.io as sio
 import copy
@@ -110,6 +110,11 @@ def main(path, dataset, datadir, eval_result_folder, model, gpu, num_cls, discri
                     resultsDict[localseedtime] = thisEnd - thisStart +  resultsDict[voting_time_name]
 
             sio.savemat(resultDictPath_mat, resultsDict)
+
+        # overlay predictions on images
+        imgfolder = os.path.join(datadir, dataset, 'images', data_split)
+        resultfolder = savefolder
+        printCoordsClass(savefolder, resultfolder, imgfolder, ['.png'], threshhold=threshold_pool[10], min_len=local_min_pool[0])
 
 if __name__ == '__main__':
     main()
