@@ -8,6 +8,7 @@ Hoffman et al. CyCADA: Cycle-Consistent Adversarial Domain Adaptation. ICML 2018
 <br />
 **Training:** The input is RGB images and corresponding labels (please find below an example training image and its corresponding label). For each training image, the label is K proximity maps (here K=3), each of which corresponds to one type of cell/nucleus. Given the gold standard annotation of each training image, the label for immunopositive tumor nuclei, immunonegative tumor nuclei and non-tumor nuclei is generated using Equation (1) in the paper [1].
 
+
 <br />
 <img src="results/example_training.png" width="1200"><br/>
 <br />
