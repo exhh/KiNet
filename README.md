@@ -13,7 +13,7 @@ Hoffman et al. CyCADA: Cycle-Consistent Adversarial Domain Adaptation. ICML 2018
 **Testing:** The input is RGB images. The output is predicted positions and categories of cells/nuclei, which will be stored in .mat files and also overlaid on the RGB images (as shown in the "Prediction" column in the figure below). You might want to download a pre-trained model from this link, https://www.dropbox.com/s/sl2l5z3d65l983t/ki67net-best.pth?dl=0, and then put the pre-trained model into the directory: learned_models/PNET-ki67net/
 
 <br />
-<img src="results/example_result.png" width="1200"><br/>
+<img src="results/example_result.png" width="1200"><br/> 
 <br />
 
 **Usage (Linux command line):** \
