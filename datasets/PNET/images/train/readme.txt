@@ -1,0 +1,1 @@
+Please put your training set images in this directory.
