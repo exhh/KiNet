@@ -1,4 +1,4 @@
-gpu=3
+gpu=0
 testdata=PNET
 traindata=PNET
 model=ki67net

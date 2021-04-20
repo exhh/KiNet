@@ -1,4 +1,4 @@
-gpu=1
+gpu=0
 data=PNET
 model=ki67net
 
