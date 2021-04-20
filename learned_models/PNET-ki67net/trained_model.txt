@@ -1,0 +1,3 @@
+Please download a pre-trained model onto the this directory from the link:
+
+https://www.dropbox.com/s/sl2l5z3d65l983t/ki67net-best.pth?dl=0
