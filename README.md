@@ -25,5 +25,3 @@ Model inference/prediction: &nbsp; ./eval_fcn_cell_class.sh
 <br /> <br />
 Relevant References:\
 [1] Xing et al. Pixel-to-pixel Learning with Weak Supervision for Single-stage Nucleus Recognition in Ki67 Images. IEEE Transactions on Biomedical Engineering, 2019.
-
-[2] Zhang et al. Generative Adversarial Domain Adaptation for Nucleus Quantification in Images of Tissue Immunohistochemically Stained for Ki-67, JCO Clinical Cancer Informatics, 2020.
