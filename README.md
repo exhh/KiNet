@@ -1,5 +1,5 @@
 # KiNet
-This code is used to locate and classify individual cells or nuclei in histological images. The code is implemented with PyTorch (version 0.4.1, https://pytorch.org/) on a Ubuntu Linux machine. This project is supported by the Informatics Technology for Cancer Research (ITCR) program from NIH. 
+This code is used to locate and classify individual cells or nuclei in histological images. The code is implemented with PyTorch (version 0.4.1, https://pytorch.org/) on a Ubuntu Linux machine. 
 
 *Some codes are based on this following code repository: \
 Hoffman et al. CyCADA: Cycle-Consistent Adversarial Domain Adaptation. ICML 2018. https://github.com/jhoffman/cycada_release
