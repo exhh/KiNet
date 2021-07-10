@@ -23,5 +23,5 @@ Model inference/prediction: &nbsp; ./eval_fcn_cell_class.sh
 Hoffman et al. CyCADA: Cycle-Consistent Adversarial Domain Adaptation. ICML 2018. https://github.com/jhoffman/cycada_release
 
 <br /> 
-Relevant References:\
+Relevant References:<br /> 
 [1] Xing et al. Pixel-to-pixel Learning with Weak Supervision for Single-stage Nucleus Recognition in Ki67 Images. IEEE Transactions on Biomedical Engineering, 2019.
