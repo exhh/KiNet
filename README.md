@@ -18,10 +18,10 @@ This code is used to locate and classify individual cells or nuclei in histologi
 Model training: &nbsp; ./train_fcn_cell_class.sh \
 Model inference/prediction: &nbsp; ./eval_fcn_cell_class.sh  
 
-
+<br /> <br />
 *Some codes are based on this following code repository: \
 Hoffman et al. CyCADA: Cycle-Consistent Adversarial Domain Adaptation. ICML 2018. https://github.com/jhoffman/cycada_release
 
-<br /> <br />
+<br /> 
 Relevant References:\
 [1] Xing et al. Pixel-to-pixel Learning with Weak Supervision for Single-stage Nucleus Recognition in Ki67 Images. IEEE Transactions on Biomedical Engineering, 2019.
