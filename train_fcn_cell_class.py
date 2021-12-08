@@ -208,22 +208,6 @@ def main(output, dataset, datadir, batch_size, lr, step, iterations,
     steps, vals = [], []
     valid_steps, valid_vals = [], []
     for im, label in roundrobin_infinite(*loaders):
-        net.train()
-        opt.zero_grad()
-
-        im_v = make_variable(im, requires_grad=False)
-        label_scale, label_mask = get_weight_mask(label, params)
-        label_v = make_variable(label_scale, requires_grad=False)
-        label_mask_v = make_variable(label_mask, requires_grad=False)
-
-        preds = net(im_v)
-        loss = weighted_loss(label_v, preds, label_mask_v)
-        loss_val = loss.data.cpu().numpy().mean()
-
-        assert not np.isnan(loss_val) ,"nan error"
-        steps.append(iteration)
-        vals.append(loss_val)
-
         if np.mod(iteration, savefre) == 0:
             torch.save(net.state_dict(), '{}.pth'.format(output))
             print('Save weights to: ', '{}.pth'.format(output))
@@ -251,28 +235,41 @@ def main(output, dataset, datadir, batch_size, lr, step, iterations,
             if count_ >= tolerance:
                 assert 0, 'performance not imporoved for so long'
 
+        net.train()
+        opt.zero_grad()
+
+        im_v = make_variable(im, requires_grad=False)
+        label_scale, label_mask = get_weight_mask(label, params)
+        label_v = make_variable(label_scale, requires_grad=False)
+        label_mask_v = make_variable(label_mask, requires_grad=False)
+
+        preds = net(im_v)
+        loss = weighted_loss(label_v, preds, label_mask_v)
+        loss_val = loss.data.cpu().numpy().mean()
+
+        assert not np.isnan(loss_val) ,"nan error"
+        steps.append(iteration)
+        vals.append(loss_val)
+
+        loss.backward()
+        losses.append(loss_val)
+        opt.step()
+
         if (iteration % showlossfreq == 0) and (iteration != 0):
             display_loss(steps, vals, plot=None, name= dataset[0] + '-' + model)
             if use_validation:
                 display_loss(valid_steps, valid_vals, plot=None, name= dataset[0] + '-' + model + '_valid')
 
-        loss.backward()
-        losses.append(loss_val)
-
-        opt.step()
-
         # log results
         if iteration % 100 == 0:
-            logging.info('Iteration {}:\t{}'
-                            .format(iteration, np.mean(losses)))
+            logging.info('Iteration {}:\t{}'.format(iteration, np.mean(losses)))
             writer.add_scalar('loss', np.mean(losses), iteration)
         iteration += 1
         if step is not None and iteration % step == 0:
             logging.info('Decreasing learning rate by 0.1.')
             step_lr(optimizer, 0.1)
         if iteration % snapshot == 0:
-            torch.save(net.state_dict(),
-                        '{}-iter{}.pth'.format(output, iteration))
+            torch.save(net.state_dict(), '{}-iter{}.pth'.format(output, iteration))
         if iteration >= iterations:
             logging.info('Optimization complete.')
             break
