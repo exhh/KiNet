@@ -18,7 +18,7 @@ This code is used to locate and classify individual cells or nuclei in histologi
 Model training: &nbsp; ./train.sh \
 Model inference/prediction: &nbsp; ./eval.sh  
 
-<br /><br />
+<br /> <br />
 ### Joint Cell/Nuclei Recognition and Tumor Region Segmentation      
 For cell/nuclei recognition, the label for each training image is K proximity maps (here K=3), each of which corresponds to one type of cell/nucleus. For tumor region segmentation, the label is a binary mask. These two tasks are jointly trained in an end-to-end manner.
 
@@ -26,11 +26,11 @@ For cell/nuclei recognition, the label for each training image is K proximity ma
 Model training: &nbsp; ./train_roi.sh \
 Model inference/prediction: &nbsp; ./eval_roi.sh 
 
-<br /> <br /> 
+<br /> <br /> <br /> 
 *Some codes are based on this following code repository: \
 Hoffman et al. CyCADA: Cycle-Consistent Adversarial Domain Adaptation. ICML 2018. https://github.com/jhoffman/cycada_release
 
 <br /> 
 Relevant References:<br /> 
-[1] Xing et al. Pixel-to-pixel Learning with Weak Supervision for Single-stage Nucleus Recognition in Ki67 Images. IEEE Transactions on Biomedical Engineering, 2019.
+[1] Xing et al. Pixel-to-pixel Learning with Weak Supervision for Single-stage Nucleus Recognition in Ki67 Images. IEEE Transactions on Biomedical Engineering, 2019. <br />
 [2] Zhang et al. Generative Adversarial Domain Adaptation for Nucleus Quantification in Images of Tissue Immunohistochemically Stained for Ki-67, JCO Clinical Cancer Informatics, 2020.
