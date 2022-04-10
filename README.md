@@ -1,7 +1,7 @@
 # KiNet
 This code is used to locate and classify individual cells or nuclei in histological images. The code is implemented with PyTorch (version 0.4.1, https://pytorch.org/) on a Ubuntu Linux machine. 
 
-### Cell/Nucei Recognition
+### Cell/Nuclei Recognition
 **Training:** The input is RGB images and corresponding labels (please find below an example training image and its corresponding label). For each training image, the label is K proximity maps (here K=3), each of which corresponds to one type of cell/nucleus. Given the gold standard annotation of each training image, the label for immunopositive tumor nuclei, immunonegative tumor nuclei and non-tumor nuclei is generated using Equation (1) in the paper [1].
 
 <br />
@@ -20,7 +20,7 @@ Model inference/prediction: &nbsp; ./eval.sh
 
 <br /><br />
 ### Joint Cell/Nuclei Recognition and Tumor Region Segmentation      
-For cell/nuclei recognition, the label for each training image is K proximity maps (here K=3), each of which corresponds to one type of cell/nucleus. For tumor region segmentation, a binary mask is proided for model training.
+For cell/nuclei recognition, the label for each training image is K proximity maps (here K=3), each of which corresponds to one type of cell/nucleus. For tumor region segmentation, the label is a binary mask. These two tasks are jointly trained in an end-to-end manner.
 
 **Usage (Linux command line):** \
 Model training: &nbsp; ./train_roi.sh \
@@ -33,3 +33,4 @@ Hoffman et al. CyCADA: Cycle-Consistent Adversarial Domain Adaptation. ICML 2018
 <br /> 
 Relevant References:<br /> 
 [1] Xing et al. Pixel-to-pixel Learning with Weak Supervision for Single-stage Nucleus Recognition in Ki67 Images. IEEE Transactions on Biomedical Engineering, 2019.
+[2] Zhang et al. Generative Adversarial Domain Adaptation for Nucleus Quantification in Images of Tissue Immunohistochemically Stained for Ki-67, JCO Clinical Cancer Informatics, 2020.
