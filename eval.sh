@@ -11,7 +11,7 @@ eval_result_folder=experiments
 
 load_model=${result}/${traindata}-${model}/${model}-${iteration}.pth
 
-python eval_fcn_cell_class.py ${load_model} --model ${model} \
+python eval.py ${load_model} --model ${model} \
     --num_cls ${num_cls} --gpu ${gpu} \
     --datadir ${datadir} \
     --dataset ${testdata} \
