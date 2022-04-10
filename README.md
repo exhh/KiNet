@@ -1,7 +1,7 @@
 # KiNet
 This code is used to locate and classify individual cells or nuclei in histological images. The code is implemented with PyTorch (version 0.4.1, https://pytorch.org/) on a Ubuntu Linux machine. 
 
-### Cell/Nucei Detection
+### Cell/Nucei Recognition
 **Training:** The input is RGB images and corresponding labels (please find below an example training image and its corresponding label). For each training image, the label is K proximity maps (here K=3), each of which corresponds to one type of cell/nucleus. Given the gold standard annotation of each training image, the label for immunopositive tumor nuclei, immunonegative tumor nuclei and non-tumor nuclei is generated using Equation (1) in the paper [1].
 
 <br />
@@ -17,6 +17,13 @@ This code is used to locate and classify individual cells or nuclei in histologi
 **Usage (Linux command line):** \
 Model training: &nbsp; ./train.sh \
 Model inference/prediction: &nbsp; ./eval.sh  
+
+### Joint Cell/Nuclei Recognition and Tumor Region Segmentation      
+For cell/nuclei recognition, the label for each training image is K proximity maps (here K=3), each of which corresponds to one type of cell/nucleus. For tumor region segmentation, a binary mask is proided for model training.
+
+**Usage (Linux command line):** \
+Model training: &nbsp; ./train_roi.sh \
+Model inference/prediction: &nbsp; ./eval.sh 
 
 <br /> <br /> 
 *Some codes are based on this following code repository: \
