@@ -73,7 +73,11 @@ def main(path, dataset, datadir, eval_result_folder, model, gpu, num_cls, discri
 
             im = Variable(im.cuda())
             votingStarting_time = time.time()
-            VotingMap = np.squeeze(net.predict(im))
+            VotingMap = net.predict(im)
+            if isinstance(VotingMap, list):
+                VotingMap = np.squeeze(VotingMap[0])
+            else:
+                VotingMap = np.squeeze(VotingMap)
             votingEnding_time = time.time()
             print("prediction time: ", votingEnding_time - votingStarting_time)
 
