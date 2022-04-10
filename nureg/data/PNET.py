@@ -25,13 +25,14 @@ class PNETParams(DatasetParams):
 class PNET(data.Dataset):
 
     def __init__(self, root, split='train', transform=None,
-                 target_transform=None):
+                 target_transform=None, use_roi = False):
         self.root = root
         sys.path.append(root)
         self.split = split
         self.ids = self.collect_ids()
         self.transform = transform
         self.target_transform = target_transform
+        self.use_roi = use_roi
         self.num_cls = 1
         self.contourname = 'Contours'
         self.decayparam = {'scale': 1.0, 'alpha': 3.0, 'r': 15.0}
@@ -58,18 +59,20 @@ class PNET(data.Dataset):
         path_other = fmt_other.format(self.split, id)
         return os.path.join(self.root, path_postm), os.path.join(self.root, path_negtm), os.path.join(self.root, path_other)
 
-    def label_path_mat(self, id):
-        fmt = 'images/{}/{}_withcontour.mat'
+    def roi_path(self, id):
+        fmt = 'rois/{}/{}_roi.png'
         path = fmt.format(self.split, id)
         return os.path.join(self.root, path)
 
-    def joint_transform(self, image, mask):
+    def joint_transform(self, image, mask, roi):
         if self.split == 'train':
             angle = transforms.RandomRotation.get_params(degrees=(-30, 30))
             image = TF.rotate(image, angle)
             mask_postm = TF.rotate(mask[0], angle)
             mask_negtm = TF.rotate(mask[1], angle)
             mask_other = TF.rotate(mask[2], angle)
+            if self.use_roi:
+                roi = TF.rotate(roi, angle)
         else:
             mask_postm = mask[0]
             mask_negtm = mask[1]
@@ -81,6 +84,9 @@ class PNET(data.Dataset):
         mask_negtm = torch.from_numpy(np.array(mask_negtm, np.int64, copy=False)).unsqueeze(0)
         mask_other = torch.from_numpy(np.array(mask_other, np.int64, copy=False)).unsqueeze(0)
         mask = torch.cat((mask_postm, mask_negtm, mask_other),dim=0)
+        if self.use_roi:
+            roi = torch.from_numpy(np.array(roi, np.int64, copy=False)).unsqueeze(0)
+            mask = torch.cat((mask_postm, mask_negtm, mask_other, roi),dim=0)
         return image, mask
 
     def __getitem__(self, index):
@@ -95,7 +101,13 @@ class PNET(data.Dataset):
         target_other = Image.open(labelname[2]).convert('L')
         target = (target_postm, target_negtm, target_other)
 
-        image, label = self.joint_transform(img, target)
+        if self.use_roi:
+            roiname = self.roi_path(id)
+            roi = Image.open(roiname).convert('L')
+        else:
+            roi = None
+
+        image, label = self.joint_transform(img, target, roi)
         if self.split == 'train':
             return image, label
         else:
