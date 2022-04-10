@@ -226,7 +226,7 @@ class Ki67NetRoi(nn.Module):
 
         self.up1_ROI   = UpConv(512, 64, 2, stride = 8)
         self.up2_ROI   = UpConv(256, 64, 2, stride = 4)
-        self.out_tr_ROI    = OutputTransition(64*3, 2, 32)
+        self.out_tr_ROI    = OutputTransition(64*3, 1, 32)
 
     def forward(self, x):
         x = to_device(x,self.device_id)
