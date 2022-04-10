@@ -15,8 +15,8 @@ This code is used to locate and classify individual cells or nuclei in histologi
 <br />
 
 **Usage (Linux command line):** \
-Model training: &nbsp; ./train_fcn_cell_class.sh \
-Model inference/prediction: &nbsp; ./eval_fcn_cell_class.sh  
+Model training: &nbsp; ./train.sh \
+Model inference/prediction: &nbsp; ./eval.sh  
 
 <br /> <br /> 
 *Some codes are based on this following code repository: \
