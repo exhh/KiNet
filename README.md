@@ -18,7 +18,7 @@ This code is used to locate and classify individual cells or nuclei in histologi
 Model training: &nbsp; ./train.sh \
 Model inference/prediction: &nbsp; ./eval.sh  
 
-<br /><br /><br />
+<br /><br />
 ### Joint Cell/Nuclei Recognition and Tumor Region Segmentation      
 For cell/nuclei recognition, the label for each training image is K proximity maps (here K=3), each of which corresponds to one type of cell/nucleus. For tumor region segmentation, a binary mask is proided for model training.
 
