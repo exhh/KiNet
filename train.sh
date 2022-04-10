@@ -15,7 +15,7 @@ result=learned_models
 outdir=${result}/${data}-${model}/${model}
 mkdir -p ${result}/${data}-${model}
 
-python train_fcn_cell_class.py ${outdir} --model ${model} \
+python train.py ${outdir} --model ${model} \
     --num_cls ${num_cls} --gpu ${gpu} \
     --lr ${lr} -b ${batch} -m ${momentum} \
     --crop_size ${crop} --iterations ${iterations} \
